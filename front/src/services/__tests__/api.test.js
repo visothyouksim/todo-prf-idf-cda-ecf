@@ -9,7 +9,7 @@ describe('API Service', () => {
     fetch.mockClear();
   });
 
-  it('getAllTodos should send a GET request to /api/todos', async () => {
+  it('getAllTodos doit envoyer une requête GET à /api/todos', async () => {
     const mockResponse = [{ id: 1, text: 'Test Todo' }];
     fetch.mockResolvedValueOnce({
       json: jest.fn().mockResolvedValueOnce(mockResponse),
@@ -21,7 +21,7 @@ describe('API Service', () => {
     expect(todos).toEqual(mockResponse);
   });
 
-  it('createTodo should send a POST request with the correct body', async () => {
+  it('createTodo doit envoyer une requête POST avec le corps correct', async () => {
     const newTodo = { id: 2, text: 'New Todo' };
     fetch.mockResolvedValueOnce({
       json: jest.fn().mockResolvedValueOnce(newTodo),
@@ -37,7 +37,7 @@ describe('API Service', () => {
     expect(result).toEqual(newTodo);
   });
 
-  it('updateTodo should send a PUT request with the correct ID and updates', async () => {
+  it('updateTodo doit envoyer une requête PUT avec l\'identifiant correct et les mises à jour.', async () => {
     const updatedTodo = { id: 1, text: 'Updated Todo' };
     fetch.mockResolvedValueOnce({
       json: jest.fn().mockResolvedValueOnce(updatedTodo),
@@ -53,7 +53,7 @@ describe('API Service', () => {
     expect(result).toEqual(updatedTodo);
   });
 
-  it('deleteTodo should send a DELETE request with the correct ID', async () => {
+  it('deleteTodo doit envoyer une requête DELETE avec l\'identifiant correct', async () => {
     fetch.mockResolvedValueOnce({});
 
     await deleteTodo(1);

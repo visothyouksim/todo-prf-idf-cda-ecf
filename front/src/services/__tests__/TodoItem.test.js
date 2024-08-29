@@ -8,7 +8,7 @@ describe('TodoItem', () => {
   const mockToggleTodo = jest.fn();
   const mockRemoveTodo = jest.fn();
 
-  it('displays the correct text for the todo', () => {
+  it('affiche le texte correct pour le todo', () => {
     const { getByText } = render(
       <TodoItem todo={mockTodo} toggleTodo={mockToggleTodo} removeTodo={mockRemoveTodo} />
     );
@@ -17,7 +17,7 @@ describe('TodoItem', () => {
     expect(todoText).toBeInTheDocument();
   });
 
-  it('renders with the correct completed state', () => {
+  it('est rendu avec l\'état complété correct', () => {
     const { getByRole } = render(
       <TodoItem todo={mockTodo} toggleTodo={mockToggleTodo} removeTodo={mockRemoveTodo} />
     );
@@ -40,7 +40,7 @@ describe('TodoItem', () => {
     expect(completedText).toHaveClass('text-muted text-decoration-line-through');
   });
 
-  it('calls toggleTodo when the checkbox is clicked', () => {
+  it('appelle toggleTodo lorsque la case à cocher est cliquée', () => {
     const { getByRole } = render(
       <TodoItem todo={mockTodo} toggleTodo={mockToggleTodo} removeTodo={mockRemoveTodo} />
     );
@@ -51,7 +51,7 @@ describe('TodoItem', () => {
     expect(mockToggleTodo).toHaveBeenCalledWith(mockTodo._id);
   });
 
-  it('calls removeTodo when the delete button is clicked', () => {
+  it('appelle removeTodo lorsque le bouton de suppression est cliqué', () => {
     const { getByRole } = render(
       <TodoItem todo={mockTodo} toggleTodo={mockToggleTodo} removeTodo={mockRemoveTodo} />
     );

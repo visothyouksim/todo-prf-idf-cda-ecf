@@ -4,7 +4,7 @@ import '@testing-library/jest-dom/extend-expect';
 import AddTodoForm from '../../components/AddTodoForm';
 
 describe('AddTodoForm', () => {
-  it('renders the form with an input field and a submit button', () => {
+  it('rend le formulaire avec un champ de saisie et un bouton de soumission', () => {
     const { getByPlaceholderText, getByRole } = render(<AddTodoForm />);
 
     const input = getByPlaceholderText('ajouter une nouvelle tâche');
@@ -14,7 +14,7 @@ describe('AddTodoForm', () => {
     expect(button).toBeInTheDocument();
   });
 
-  it('updates local state when text is entered', () => {
+  it('met à jour l\'état local lorsque du texte est saisi', () => {
     const { getByPlaceholderText } = render(<AddTodoForm />);
     const input = getByPlaceholderText('ajouter une nouvelle tâche');
 
@@ -23,7 +23,7 @@ describe('AddTodoForm', () => {
     expect(input.value).toBe('New Todo');
   });
 
-  it('calls addTodo function on form submission', () => {  
+  it('appelle la fonction addTodo lors de la soumission du formulaire', () => {  
     const addTodo = jest.fn();  
     const { getByPlaceholderText, getByRole } = render(<AddTodoForm addTodo={addTodo} />);  
 
@@ -36,7 +36,7 @@ describe('AddTodoForm', () => {
     expect(addTodo).toHaveBeenCalledWith('New Todo');  
   });
 
-  it('resets the input field after form submission', () => {
+  it('réinitialise le champ de saisie après la soumission du formulaire', () => {
     const addTodo = jest.fn();  
     const { getByPlaceholderText, getByRole } = render(<AddTodoForm addTodo={addTodo} />);  
 

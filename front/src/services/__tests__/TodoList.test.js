@@ -21,14 +21,14 @@ describe('TodoList', () => {
     deleteTodo.mockResolvedValue({});
   });
 
-  it('renders multiple TodoItems based on provided props', async () => {
+  it('rend plusieurs TodoItems sur la base des accessoires fournis', async () => {
     render(<TodoList />);
 
     const todoItems = await screen.findAllByRole('listitem');
     expect(todoItems).toHaveLength(mockTodos.length);
   });
 
-  it('displays a message when there are no todos', async () => {
+  it('affiche un message lorsqu\'il n\'y a pas de todos', async () => {
     getAllTodos.mockResolvedValueOnce([]);
     render(<TodoList />);
 
@@ -36,7 +36,7 @@ describe('TodoList', () => {
     expect(listItems).toHaveLength(0);
   });
 
-  it('passes correct props to each TodoItem', async () => {
+  it('transmet les accessoires corrects à chaque TodoItem', async () => {
     render(<TodoList />);
 
     const todoItems = await screen.findAllByRole('listitem');
@@ -45,7 +45,7 @@ describe('TodoList', () => {
     expect(todoItems[1]).toHaveTextContent('Todo 2');
   });
 
-  it('adds a new todo when the form is submitted', async () => {
+  it('ajoute une nouvelle tâche lorsque le formulaire est soumis', async () => {
     render(<TodoList />);
 
     const input = screen.getByPlaceholderText('ajouter une nouvelle tâche');
@@ -58,7 +58,7 @@ describe('TodoList', () => {
     expect(newTodoItem).toBeInTheDocument();
   });
 
-  it('toggles a todo completed state when checkbox is clicked', async () => {
+  it('fait basculer l\'état d\'achèvement d\'une tâche lorsque l\'on clique sur la case à cocher', async () => {
     render(<TodoList />);
 
     const todoItems = await screen.findAllByRole('listitem');
@@ -69,7 +69,7 @@ describe('TodoList', () => {
     expect(updateTodo).toHaveBeenCalledWith('1', { completed: true });
   });
 
-  it('removes a todo when the delete button is clicked', async () => {
+  it('supprime une tâche lorsque l\'on clique sur le bouton de suppression', async () => {
     render(<TodoList />);
 
     const todoItems = await screen.findAllByRole('listitem');
